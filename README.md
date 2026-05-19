@@ -43,8 +43,7 @@ Before launching any execution suite, start your local Appium listener service o
 ```bash
 
 appium -p 4723
-Selecting Your Platform (testng.xml)
-Before clicking run, you must specify your target platform inside your testng.xml configuration file at the root of the project. Locate the platform parameter line:
+
 
 To Run iOS: Update the value parameter to "ios":
 <parameter name="platform" value="ios"/>
