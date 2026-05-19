@@ -6,7 +6,7 @@
         <listener class-name="app.wiproAssignment.com.listeners.TestListener"/>
     </listeners>
 
-    <parameter name="platform" value="android"/>
+    <parameter name="platform" value="ios"/>
     <parameter name="runMode" value="local"/>
 
     <test name="Taqelah Tests">

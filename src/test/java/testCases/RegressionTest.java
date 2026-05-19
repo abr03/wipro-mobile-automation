@@ -62,7 +62,6 @@ public class RegressionTest extends BaseTest {
         } else if (platform.equalsIgnoreCase("iOS")) {
             loginScreen.fillAllLoginInformation(email,password);
             loginScreen.tapConfirmLoginButton();
-            loginScreen.validateLoginErrorMessageIsVisible();
             homeScreen.validateMenuVisible();
             homeScreen.validateCartVisible();
         }
@@ -78,9 +77,7 @@ public class RegressionTest extends BaseTest {
         } else if (platform.equalsIgnoreCase("iOS")) {
             loginScreen.fillAllLoginInformation(email,password);
             loginScreen.tapConfirmLoginButton();
-            loginScreen.validateLoginErrorMessageIsVisible();
-            homeScreen.validateMenuVisible();
-            homeScreen.validateCartVisible();
+            homeScreen.getListOfMenus();
         }
     }
 
@@ -96,9 +93,8 @@ public class RegressionTest extends BaseTest {
         } else if (platform.equalsIgnoreCase("iOS")) {
             loginScreen.fillAllLoginInformation(email,password);
             loginScreen.tapConfirmLoginButton();
-            loginScreen.validateLoginErrorMessageIsVisible();
-            homeScreen.validateMenuVisible();
-            homeScreen.validateCartVisible();
+            homeScreen.getListOfMenus();
+            productScreen.validateUserAbleToSelectProduct();
         }
     }
     @Test(dataProvider ="loginData", dataProviderClass = DataSupplier.class, priority = 6,groups = {"Regression"}, description = "Verify user is able to Add product to shopping cart")
@@ -131,9 +127,7 @@ public class RegressionTest extends BaseTest {
         } else if (platform.equalsIgnoreCase("iOS")) {
             loginScreen.fillAllLoginInformation(email,password);
             loginScreen.tapConfirmLoginButton();
-            loginScreen.validateLoginErrorMessageIsVisible();
-            homeScreen.validateMenuVisible();
-            homeScreen.validateCartVisible();
+            homeScreen.validateUserAbleToLogOut();
         }
     }
 

@@ -65,7 +65,7 @@ public class DriverFactory {
                 options.setApp(Constants.getAppIosFilePath());
                 options.autoAcceptAlerts();
                 options.setMaxTypingFrequency(10);
-                URI uri = new URI("http://127.0.0.1:" + String.valueOf(Constants.getIosPort()));
+                URI uri = new URI("http://127.0.0.1:" + String.valueOf(Constants.getAndroidPort()));
 
                 driver = new IOSDriver(uri.toURL(), options);
             }

@@ -62,7 +62,6 @@ public class SmokeTest extends BaseTest {
         } else if (platform.equalsIgnoreCase("iOS")) {
             loginScreen.fillAllLoginInformation(email,password);
             loginScreen.tapConfirmLoginButton();
-            loginScreen.validateLoginErrorMessageIsVisible();
             homeScreen.validateMenuVisible();
             homeScreen.validateCartVisible();
         }
@@ -78,9 +77,7 @@ public class SmokeTest extends BaseTest {
         } else if (platform.equalsIgnoreCase("iOS")) {
             loginScreen.fillAllLoginInformation(email,password);
             loginScreen.tapConfirmLoginButton();
-            loginScreen.validateLoginErrorMessageIsVisible();
-            homeScreen.validateMenuVisible();
-            homeScreen.validateCartVisible();
+            homeScreen.validateUserAbleToLogOut();
         }
     }
 

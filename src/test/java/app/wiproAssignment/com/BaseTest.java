@@ -20,7 +20,7 @@ public class BaseTest {
 
     @Parameters({"platform"})
     @BeforeSuite
-    public void startServer(@Optional("android")String platform){
+    public void startServer(@Optional("ios")String platform){
 
         AppiumServiceBuilder builder = new AppiumServiceBuilder()
                 .withAppiumJS(new File(Constants.getAppiumPath()))
@@ -43,7 +43,7 @@ public class BaseTest {
 
     @Parameters({"platform","runMode"})
     @BeforeMethod(alwaysRun = true)
-    public void setUp(@Optional("android") String platform, @Optional("local") String runMode, Method method) throws Exception {
+    public void setUp(@Optional("ios") String platform, @Optional("local") String runMode, Method method) throws Exception {
         this.platform = platform;
 
         Driver.initDriver(platform, runMode, method.getName());
