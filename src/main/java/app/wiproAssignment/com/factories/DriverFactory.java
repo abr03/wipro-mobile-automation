@@ -12,11 +12,11 @@ import org.openqa.selenium.MutableCapabilities;
 import java.net.URI;
 
 public class DriverFactory {
-    public static AppiumDriver getDriver(String device, String runMode, String testName) throws Exception {
+    public static AppiumDriver getDriver(String runMode,String platform, String testName, String device, String serverPort, String systemPort) throws Exception {
         AppiumDriver driver = null;
 
         if (runMode.equalsIgnoreCase("remote")) {
-            if (device.equalsIgnoreCase("ios")) {
+            if (platform.equalsIgnoreCase("ios")) {
                 MutableCapabilities caps = new MutableCapabilities();
                 caps.setCapability("platformName", PropertyBuilder.getProperty("platformNameIOS"));
                 caps.setCapability("appium:app", PropertyBuilder.getProperty("appIOS"));  // The filename of the mobile app
@@ -53,10 +53,12 @@ public class DriverFactory {
         } else {
             if (device.equalsIgnoreCase("android")) {
                 UiAutomator2Options options = new UiAutomator2Options();
+                options.setDeviceName(device);
+                options.setSystemPort(Integer.parseInt(serverPort));
                 options.setDeviceName(PropertyBuilder.getProperty("androidSimulatorName"));
                 options.setApp(Constants.getAppFilePath());
                 options.autoGrantPermissions();
-                URI uri = new URI("http://127.0.0.1:" + String.valueOf(Constants.getAndroidPort()));
+                URI uri = new URI("http://127.0.0.1:" + serverPort);
 
                 driver = new AndroidDriver(uri.toURL(), options);
             } else {
