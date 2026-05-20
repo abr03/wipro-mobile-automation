@@ -10,11 +10,11 @@ public class Driver {
 
     }
 
-    public static void initDriver(String device, String runMode, String testName) throws Exception {
+    public static void initDriver(String platform, String mode, String name, String device, String runMode, String testName) throws Exception {
 
         if (DriverManager.getDriver()==null) {
             try {
-                DriverManager.setDriver(DriverFactory.getDriver(device, runMode, testName));
+                DriverManager.setDriver(DriverFactory.getDriver(device, runMode, testName,platform,mode,name));
                 System.out.println("AppiumDriver initialized for device: " + device);
             } catch (MalformedURLException e) {
                 System.err.println("Error initializing AppiumDriver: " + e.getMessage());

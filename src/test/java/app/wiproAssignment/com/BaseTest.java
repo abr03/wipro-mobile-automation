@@ -17,8 +17,10 @@ import java.lang.reflect.Method;
 public class BaseTest {
     public String platform;
     AppiumDriverLocalService service;
+    AppiumDriverLocalService service2;
 
-    @Parameters({"platform"})
+
+    @Parameters({"platform","runMode","deviceName","serverPort","systemPort"})
     @BeforeSuite
     public void startServer(@Optional("ios")String platform){
 
@@ -34,6 +36,9 @@ public class BaseTest {
            service= AppiumDriverLocalService.buildService(builder);
            service.start();
 
+            service2= AppiumDriverLocalService.buildService(builder);
+            service2.start();
+
         } catch (AppiumServerHasNotBeenStartedLocallyException e) {
             e.printStackTrace();
         }
@@ -41,12 +46,11 @@ public class BaseTest {
         System.out.println("Appium Server Started");
     }
 
-    @Parameters({"platform","runMode"})
     @BeforeMethod(alwaysRun = true)
-    public void setUp(@Optional("ios") String platform, @Optional("local") String runMode, Method method) throws Exception {
+    public void setUp(@Optional("ios") String platform,String runMode, String devicename,String serverPort,String systemPort, Method method) throws Exception {
         this.platform = platform;
 
-        Driver.initDriver(platform, runMode, method.getName());
+        Driver.initDriver(platform, runMode, method.getName(),devicename,serverPort,systemPort);
     }
     @AfterMethod(alwaysRun = true)
     public void tearDown(){
